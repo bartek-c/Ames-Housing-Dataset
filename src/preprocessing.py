@@ -1,4 +1,4 @@
-# imports
+# library imports
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
@@ -9,6 +9,9 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from category_encoders import MEstimateEncoder
+
+# project imports
+from categorical_features import cat_features
 
 # drop cols and create features from aggregated bathrooms and porch areas
 class FeatureSelector(BaseEstimator, TransformerMixin):
