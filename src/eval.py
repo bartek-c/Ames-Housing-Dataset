@@ -1,4 +1,10 @@
 # imports
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import learning_curve
 
 # function to score dataset from Kaggle
 def score_dataset(X, y, model):
@@ -11,18 +17,13 @@ def score_dataset(X, y, model):
     return score
 
 # learning curve for neural network
-history_df = pd.DataFrame(history.history)
-history_df.loc[:, ['loss', 'val_loss']].plot();
-print(f"Minimum validation loss: {(history_df['val_loss'].min())**0.5}; Epoch = {history_df['val_loss'].idxmin()}")
-print(f"Minimum training loss: {(history_df['loss'].min())**0.5}; Epoch = {history_df['loss'].idxmin()}")
-      
-# list of models
-models = [{'model':xgboost_model, 'model_name':'XGBoost'},
-          {'model':rf_model, 'model_name':'Random Forest Regressor'},
-          {'model':nn_model, 'model_name':'Neural Network'}]
-      
-# transform full training dataset with pipeline
-X_train_full_transformed = pipeline.transform(X_train_full)
+def plot_nn_history(history):
+    history_df = pd.DataFrame(history.history)
+    history_df.loc[:, ['loss', 'val_loss']].plot();
+    print(f"Minimum validation loss: {(history_df['val_loss'].min())**0.5}; Epoch = {history_df['val_loss'].idxmin()}")
+    print(f"Minimum training loss: {(history_df['loss'].min())**0.5}; Epoch = {history_df['loss'].idxmin()}")
+          
+    return history_df
       
 # function to plot learning curve
 def plot_learning_curve(estimator, X, y, cv, model_name):
@@ -61,7 +62,7 @@ def plot_learning_curve(estimator, X, y, cv, model_name):
     
     return plt
       
-for model in models[:2]:
-    plot_learning_curve(model['model'], X_train_full_transformed, y_train_full, 5, model['model_name'])
+#for model in models[:2]:
+#    plot_learning_curve(model['model'], X_train_full_transformed, y_train_full, 5, model['model_name'])
     
-plt.show()
+#plt.show()
