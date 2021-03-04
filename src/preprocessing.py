@@ -8,6 +8,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from category_encoders import MEstimateEncoder
 
 # drop cols and create features from aggregated bathrooms and porch areas
 class FeatureSelector(BaseEstimator, TransformerMixin):
