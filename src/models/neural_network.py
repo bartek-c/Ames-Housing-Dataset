@@ -46,4 +46,4 @@ def train_nn(X_train, y_train, X_val, y_val):
         verbose=0 # turn off training log
     )
     
-    return nn_model, history
+    return {'model':nn_model, 'history':history}
