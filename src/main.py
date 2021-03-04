@@ -47,7 +47,7 @@ def make_predictions(X_test, model, model_name):
     sub['SalePrice'] = preds
     sub = sub.set_index('Id')
     # export to csv
-    sub.to_csv(f"../data/{model_name}_sub.csv")
+    sub.to_csv(f"../outputs/{model_name}_sub.csv")
     
     return True
   
