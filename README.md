@@ -28,11 +28,17 @@ After iterating over a range of hyperparameter values, I found the following to 
 
 [Learning Curve - XGBoost]()
 
-The learning 
+The learning curve shows the model to be overfitting, and the negative gradient of the validation loss-curve shows that there would be potential success in increasing the number of training examples to combat this. 
 
 ### Random Forest
+The random forest model, using 300 estimators, performed slightly worse than the XGBoost model. The learning curve below shows a similar trend.
+
+[Learning Curve - Random Forest Regressor]()
 
 ### Neural Network
+The neural network scored lowest of the 3 models. It was comprised of 3 dense layers (with 512, 256, 256 neurons respectively) with each layer using ReLU activation function and utilised L1 regularization on the first two layers. The next step will be to perform further hyperparameter tuning and potentially feature engineering to improve the model's performance.
+
+[Learning Curve - Neural Network]()
 
 ## Further Work
 As an extension of the project, I plan to delve into the XGBoost and Neural Network models and perform a more in-depth optimization process, before comparing their performance.
