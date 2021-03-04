@@ -3,7 +3,7 @@ In this project I examined the Ames Housing Dataset from Kaggle's [Advance Regre
 
 ## Data Exploration
 The heat map below shows the strenght of correlation of each feature with the target - `SalePrice`. The features with the strongest correlation were indicators of quality (`OverallQual`), area (`GrLivArea`, `1stFlrSF`), number of rooms (`TotRmsAbvGrd`), garage size (`GarageCars`, `GarageArea`) and the age of the property (`YearBuilt`, `YearRemodAdd`)
-[Correlation Heat Map]()
+![Correlation Heat Map](images/correlation_heat_map.png)
 
 ## Missing Values - Imputing Lot Frontage
 One of the more challenging tasks was imputing missing values for the `LotFrontage` feature (17.7% of training examples were missing this value). Values for this variable ranged between 21 and 313, with a mean of 70.04. Estimating `LotFrontage` using the mean resulted in a mean absolute error of 15.41. I instead opted to impute missing values using a random forest regressor, using the following features: `Neighborhood`, `LotArea`, `BldgType`, `MSZoning` (the general zoning classification e.g. agriculture, commercial, residential high density), `GarageCars`. This reduced the MAE to 8.52.
