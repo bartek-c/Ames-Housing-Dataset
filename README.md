@@ -11,7 +11,7 @@ One of the more challenging tasks was imputing missing values for the `LotFronta
 ## Feature Engineering - K-means Clustering
 I used the K-means clustering algorithm to split the data into 3 clusters based on `YearBuilt` and `YearRemodAdded`. The plot below illustrates this and shows that for newer properties, the year the house was built has a greater impact on Sale Price. Looking at the older properties in the dataset, the trend shows a slight decrease in value over time (though the uncertainty here is greater) with a possible explanation being premium prices for antique homes.
 
-[YearBuilt vs YrCluster]()
+![YearBuilt vs YrCluster](images/yrcluster_regplot.png)
 
 ## Models & Predictions
 I compared 3 models: XGBoost, Random Forest Regression and a Neural Network. The evaluation metric used for the Kaggle competition was RMSLE (root mean square logarithmic error). As a baseline value, the RMSLE obtained by the Kaggle benchmark submission from a linear regression on year and month of sale, lot square footage, and number of bedrooms was 0.40613
@@ -26,19 +26,19 @@ After iterating over a range of hyperparameter values, I found the following to 
 - Learning rate: 0.1
 - No. of estimators: 100
 
-[Learning Curve - XGBoost]()
+![Learning Curve - XGBoost](images/xgboost_learning_curve.png)
 
 The learning curve shows the model to be overfitting, and the negative gradient of the validation loss-curve shows that there would be potential success in increasing the number of training examples to combat this. 
 
 ### Random Forest
 The random forest model, using 300 estimators, performed slightly worse than the XGBoost model. The learning curve below shows a similar trend.
 
-[Learning Curve - Random Forest Regressor]()
+![Learning Curve - Random Forest Regressor](images/rf_learning_curve.png)
 
 ### Neural Network
 The neural network scored lowest of the 3 models. It was comprised of 3 dense layers (with 512, 256, 256 neurons respectively) with each layer using ReLU activation function and utilised L1 regularization on the first two layers. The next step will be to perform further hyperparameter tuning and potentially feature engineering to improve the model's performance.
 
-[Learning Curve - Neural Network]()
+![Learning Curve - Neural Network](images/nn_learning_curve.png)
 
 ## Further Work
 As an extension of the project, I plan to delve into the XGBoost and Neural Network models and perform a more in-depth optimization process, before comparing their performance.
